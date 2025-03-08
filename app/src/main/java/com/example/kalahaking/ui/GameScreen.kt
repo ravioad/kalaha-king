@@ -42,22 +42,22 @@ fun GameScreen(modifier: Modifier = Modifier) {
 
     val boardState = remember {
         mutableStateListOf(
-            1, 0, 0, 0, 0, 0, //Player 1, pits
-            25, //Player 1, Kalaha (Store)
-            0, 0, 0, 0, 1, 0, //Player 2, pits
-            15, //Player 2, Kalaha (Store)
+            0, 0, 0, 0, 0, 0, //Player 1, pits
+            0, //Player 1, Kalaha (Store)
+            0, 0, 0, 0, 0, 0, //Player 2, pits
+            0, //Player 2, Kalaha (Store)
         )
     } // Observe changes in the board
     var currentPlayerState by remember { mutableIntStateOf(1) }// Observe changes in current player
     var messageState by remember { mutableStateOf("Welcome to Kalaha!") }// Observe changes in messages
 
     fun initializeGame() {
-//        for (i in 0..5) {
-//            boardState[i] = 4 // Player 1 pits (indices 0-5)
-//        }
-//        for (i in 7..12) {
-//            boardState[i] = if(i == 11) 1 else 4 // Player 2 pits (indices 7-12)
-//        }
+        for (i in 0..5) {
+            boardState[i] = 4 // Player 1 pits (indices 0-5)
+        }
+        for (i in 7..12) {
+            boardState[i] = 4 // Player 2 pits (indices 7-12)
+        }
         currentPlayerState = 2
         messageState = "Player 1's Turn"
     }
@@ -93,7 +93,7 @@ fun GameScreen(modifier: Modifier = Modifier) {
 
         val lastPitLanded = currentPitIndex
 
-        //TODO: (IF the last seed ends up in an empty pit, player takes all from the opposite and from the last pit
+        //(IF the last seed ends up in an empty pit, player takes all the seeds from the opposite pit (+1 from the last pit)
 
         // Capture Rule
         if (player == 1 && lastPitLanded in playerPitsRange && boardState[lastPitLanded] == 1) {
