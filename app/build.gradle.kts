@@ -20,6 +20,7 @@ android {
 
     buildTypes {
         release {
+//sS.Zw3s35hA!HDi
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

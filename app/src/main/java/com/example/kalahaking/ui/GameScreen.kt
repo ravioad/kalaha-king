@@ -37,16 +37,16 @@ import com.example.kalahaking.ui.theme.secondaryLightMediumContrast
 import com.example.kalahaking.ui.theme.tertiaryLightMediumContrast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @Composable
 fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
-
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
 
     val boardState = remember {
         mutableStateListOf(
-            0, 0, 0, 0, 0, 1, //Player 1, pits
+            0, 0, 0, 0, 0, 0, //Player 1, pits
             0, //Player 1, Kalaha (Store)
             0, 0, 0, 0, 0, 0, //Player 2, pits
             0, //Player 2, Kalaha (Store)
@@ -110,23 +110,6 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
             boardState[i] = 4 // Player 2 pits (indices 7-12)
         }
     }
-
-    suspend fun initializeGame() {
-        if (gameOver) {
-            winnerPlayer = 0
-            gameOver = false
-            isFreeTurn = false
-            resetStores()
-            player1Message = "Welcome to Kalaha!"
-            player2Message = "Welcome to Kalaha!"
-        }
-        setPits()
-        currentPlayerState = 1
-        delay(3000)
-        startGame = true
-        showMessage(1)
-    }
-
     fun makeMove(player: Int, startPitIndex: Int): Boolean {
         val kalahaIndex: Int
         val opponentKalahaIndex: Int
@@ -191,12 +174,10 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
         for (i in 0..5) { // Player 1 pits 0-5
             player1Surplus += boardState[i]
             player1Score += boardState[i]
-//            boardState[i] = 0
         }
         for (i in 7..12) { // Player 2 pits 7-12
             player2Surplus += boardState[i]
             player2Score += boardState[i]
-//            boardState[i] = 0
         }
 
         val winnerMessage = when {
@@ -263,6 +244,30 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
                     onPitClick(2, it)
                 })
             }
+        }
+    }
+
+
+    suspend fun initializeGame() {
+        if (gameOver) {
+            winnerPlayer = 0
+            gameOver = false
+            isFreeTurn = false
+            resetStores()
+            player1Message = "Welcome to Kalaha!"
+            player2Message = "Welcome to Kalaha!"
+        }
+        setPits()
+        val randomPlayer = Random.nextInt(2) + 1 // Generates 1 or 2 randomly
+        "initializeGamePlayer".printLog(randomPlayer)
+        currentPlayerState = randomPlayer
+        delay(3000)
+        startGame = true
+        showMessage(currentPlayerState)
+        if(currentPlayerState == 2){ //If the player 2's is to make the first turn.
+            makeAIMove(onPlayerMove = {
+                onPitClick(2, it)
+            })
         }
     }
 
