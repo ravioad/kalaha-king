@@ -1,7 +1,5 @@
 package com.example.kalahaking.ui
 
-import android.util.Log
-
 class HelperAI {
     private fun evaluateBoard(board: IntArray, player: Int): Int {
         val player2KalahaScore = board[13]
@@ -16,17 +14,10 @@ class HelperAI {
         score += player2KalahaScore * kalahaWeight
         score -= player1KalahaScore * opponentKalahaWeight
 
-        val possibleMoves = getPossibleMovesForPlayer(
-            board,
-            player
-        ) // Get valid moves for the player we are evaluating
+        val possibleMoves = getPossibleMovesForPlayer(board, player)
         for (pitChoice in possibleMoves) {
-            if (wasCaptureMadeInMove(
-                    board,
-                    player,
-                    pitChoice
-                )
-            ) { // Check if move resulted in capture
+            // Check if move resulted in capture
+            if (wasCaptureMadeInMove(board, player, pitChoice)) {
                 score += captureWeight  // Add capture bonus if move leads to capture
             }
         }
@@ -82,7 +73,6 @@ class HelperAI {
                 possiblePits.add(pitIndex)
             }
         }
-        Log.e("possiblePits", possiblePits.toString())
         return possiblePits
     }
 
@@ -213,17 +203,14 @@ class HelperAI {
         }
 
         for (pitChoice in possiblePits) {
-            val nextBoardState = makeMoveForMinimax(
-                currentBoardState,
-                2,
-                pitChoice
-            ) //AI (Player 2) makes first (hypothetical) move
+            //AI (Player 2) makes first (hypothetical) move
+            val nextBoardState = makeMoveForMinimax(currentBoardState, 2, pitChoice)
             val score = minimax(
-                nextBoardState,
+                board = nextBoardState,
                 depth = 4,
-                alpha,
-                beta,
-                false
+                alpha = alpha,
+                beta = beta,
+                maximizingPlayer = false
             ) //then, initiates chain of moves with (2nd hypothetical) move of the "Human" opponent.
 
             if (score > bestScore) {
