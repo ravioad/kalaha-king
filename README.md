@@ -18,39 +18,33 @@ To build and run this application from source, you will need:
 1.  **Clone the Project:** Download or clone this project repository to your local machine.
 2.  **Open in Android Studio:**
     *   Start Android Studio.
-    *   Select "Open an Existing Project" and navigate to the directory where you cloned the project.
-    *   Select the project folder and click "Open".
+    *   Select **"Open an Existing Project"** and navigate to the directory where you cloned the project.
+    *   Select the project folder and click **"Open"**.
 3.  **Gradle Sync:** Android Studio will automatically start Gradle syncing. Wait for Gradle to finish building and syncing the project. This might take a few minutes, especially the first time you open the project.
 4.  **Build the Application:**
-    *   In Android Studio, go to "Build" in the menu bar.
-    *   Select "Make Project" or "Rebuild Project".
+    *   In Android Studio, go to **"Build"** in the menu bar.
+    *   Select **"Make Project"** or **"Rebuild Project"**.
 5.  **Run on Emulator or Device:**
     *   **Emulator:** If you have a configured Android Emulator, select it from the device dropdown menu in the Android Studio toolbar (usually next to the "Run" button).
-    *   **Physical Device:**  Connect your Android device to your computer via USB cable. Make sure USB debugging is enabled on your device (usually found in Developer Options in your device's Settings). Android Studio should detect your connected device, and it will appear in the device dropdown menu.
-    *   Click the "Run" button (green play icon in the toolbar) to build and run the application on your selected emulator or device.
+    *   **Physical Device:**  Connect your Android device to your computer via USB cable. Make sure USB debugging is enabled on your device (usually found in **Developer Options** in your device's Settings). Android Studio should detect your connected device, and it will appear in the device dropdown menu.
+    *   Click the **"Run"** button (green play icon in the toolbar) to build and run the application on your selected emulator or device.
 
-## Convenience Option: Download and Install APK (Direct Installation)
+## Convenience Option: Install via Firebase App Distribution (Easiest Way!)
 
-If you do not wish to set up Android Studio and build from source, you can directly download and install a pre-built APK (Android Package Kit) file of the application.
+Want to play Kalaha right away without using Android Studio? Follow these super simple steps to install the app directly on your Android device using Firebase App Distribution:
 
-**[Download APK File Here](https://appdistribution.firebase.dev/i/a0fa562e61ea8ab8)**
+1.  **Click the Invitation Link:**  Find the invitation link for the Kalaha app. **[Tap on this link](https://appdistribution.firebase.dev/i/a0fa562e61ea8ab8)** on your computer or directly on your Android device.
+2.  **Check Your Email Inbox:**  After clicking the link, you will receive an email from Firebase App Distribution in your email inbox.
+3.  **Open Email on Your Android Phone:** **Important:** Open this email **using the email app on your Android phone** (not on your computer).  The email contains a special link that will guide the installation on your device.
+4.  **Follow Email Instructions:**  Inside the email, you'll see clear instructions on how to download and install the "Kalaha King" app.  **Just follow the steps described in the email.**  It will likely involve tapping a button to download and then tapping to install.
+5.  **Start Playing!** Once the installation is complete, you'll find the "Kalaha King" app on your phone or app list. **Tap the app icon to launch the game and start playing Kalaha against the AI!**
 
-[//]: # (**&#40;Replace `YOUR_APK_DOWNLOAD_LINK_HERE` with the actual download link to your APK file. You can use services like Google Drive, Dropbox, or GitHub Releases to host your APK file.&#41;**)
-
-**Installation Instructions (APK):**
-
-1.  **Download the APK file:** Download the `kalaha-ai-game.apk` file (or whatever you named your APK file) to your computer.
-2.  **Transfer APK to Android Device:** Transfer the downloaded APK file to your Android device. You can do this via USB cable, cloud storage, or email.
-3.  **Enable "Install Unknown Apps":** On your Android device, you may need to enable "Install unknown apps" from your browser or file manager app (depending on your Android version and security settings). This is usually found in Settings > Apps > Special app access > Install unknown apps, or similar.
-4.  **Install the APK:** Use a file manager app on your Android device to locate the downloaded APK file. Tap on the APK file to begin the installation process. Follow the on-screen prompts to install the application.
-5.  **Run the Kalaha AI Game:** Once installed, you should find the "Kalaha Game" app icon in your app drawer. Tap on the icon to launch and play the game!
-
-**Note:** Installing APKs from unknown sources carries a potential security risk. Ensure you trust the source of the APK file before installing it. This APK is provided for convenience and is built from the source code in this repository.
+**Note:** Firebase App Distribution is a safe and convenient method for installing test versions of Android apps. You can be assured that the app is coming from a trusted source via Firebase.
 
 ## Game Features
 
 *   Play Kalaha against a computer AI opponent.
-*   AI opponent uses the Minimax algorithm with Alpha-Beta pruning for strategic gameplay.
+*   AI opponent uses the **Minimax algorithm with Alpha-Beta pruning** for strategic gameplay.
 *   Adjustable AI search depth (in the code - for future enhancement).
 *   Simple and intuitive graphical user interface.
 *   Randomized first player for fairer gameplay.
@@ -82,5 +76,3 @@ This project can be further enhanced by:
 ---
 
 Enjoy playing Kalaha against the AI!
-
-[//]: # (**&#40;Remember to replace `YOUR_APK_DOWNLOAD_LINK_HERE` with your actual APK download link and specify your project license.&#41;**)

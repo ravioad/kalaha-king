@@ -1,6 +1,6 @@
 package com.example.kalahaking.ui
 
-class HelperAI {
+class KalahaAI {
     private fun evaluateBoard(board: IntArray, player: Int): Int {
         val player2KalahaScore = board[13]
         val player1KalahaScore = board[6]

@@ -39,7 +39,7 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 @Composable
-fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
+fun GameScreen(modifier: Modifier = Modifier, ai: KalahaAI) {
 //    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
 
