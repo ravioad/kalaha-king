@@ -1,0 +1,39 @@
+                                 [P1:[2, 3] P2:[1, 2]] (Level 0 - MAX Node) Score: **4**
+                                      /                 \
+                                     /                   \
+                         Move 1 (P2 Pit 1)            Move 2 (P2 Pit 2)
+                        /                                 \
+[P1:[2, 3] P2:[0, 3]] (Level 1 - MIN Node) Score: **4**    [P1:[2, 3] P2:[1, 0]] (Level 1 - MIN Node) Score: **3**
+       /       \                                  /       \
+      /         \                                /         \
+ Move 1.1     Move 1.2                     Move 2.1     Move 2.2
+(P1 Pit 1)   (P1 Pit 2)                   (P1 Pit 1)   (P1 Pit 2)
+    /    \       /    \                       /    \       /    \
+   /      \     /      \                     /      \     /      \
+[P1:[0, 3]  [P1:[2, 0]  [P1:[0, 3]  [P1:[2, 0]     [P1:[0, 3]  [P1:[2, 0]  [P1:[0, 3]  [P1:[2, 0]
+P2:[0, 3]]  P2:[0, 3]]  P2:[0, 3]]  P2:[0, 3]]     P2:[1, 0]]  P2:[1, 0]]  P2:[1, 0]]  P2:[1, 0]]
+(Level 2-MAX) (Level 2-MAX) (Level 2-MAX) (Level 2-MAX) (Level 2-MAX) (Level 2-MAX) (Level 2-MAX) (Level 2-MAX)
+Score: 3      Score: 4      Score: 2      Score: 4      Score: 2      Score: 3      Score: 1      Score: 3
+     /  \       /  \         /  \       /  \           /  \       /  \         /  \       /  \
+    /    \     /    \       /    \     /    \         /    \     /    \       /  \       /  \
+Move   Move Move   Move   Move   Move Move   Move     Move   Move Move   Move   Move   Move Move   Move
+1.1.1 1.1.2 1.2.1 1.2.2  2.1.1 2.1.2 2.2.1 2.2.2     1.1.1 1.1.2 1.2.1 1.2.2  2.1.1 2.1.2 2.2.1 2.2.2
+(P2   (P2   (P2   (P2    (P2   (P2   (P2   (P2       (P2   (P2   (P2   (P2    (P2   (P2   (P2   (P2
+Pit1) Pit2) Pit1) Pit2)  Pit1) Pit2) Pit1) Pit2)     Pit1) Pit2) Pit1) Pit2)  Pit1) Pit2) Pit1) Pit2)
+  / \  / \   / \  / \     / \  / \   / \  / \       / \  / \   / \  / \     / \  / \   / \  / \
+ /   \ /   \ /   \ /   \   /   \ /   \ /   \ /   \     /   \ /   \ /   \ /   \   /   \ /   \ /   \ /   \
+[Board... [Board...[Board...[Board... [Board...[Board...[Board...[Board... [Board...[Board...[Board...[Board... [Board...[Board...[Board...[Board...
+Level 3   Level 3 Level 3 Level 3   Level 3 Level 3 Level 3 Level 3   Level 3 Level 3 Level 3 Level 3   Level 3 Level 3 Level 3 Level 3
+-MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-  -MIN-
+Score:2  Score:3  Score:1  Score:2  Score:3  Score:4  Score:0  Score:1  Score:1  Score:2  Score:0  Score:1  Score:2  Score:3  Score:-1 Score:1
+  / \  / \   / \  / \     / \  / \   / \  / \       / \  / \   / \  / \     / \  / \   / \  / \
+ /   \ /   \ /   \ /   \   /   \ /   \ /   \ /   \     /   \ /   \ /   \ /   \   /   \ /   \ /   \ /   \
+Move   Move Move   Move   Move   Move Move   Move     Move   Move Move   Move   Move   Move Move   Move
+...    ...  ...   ...   ...    ...  ...   ...     ...    ...  ...   ...   ...    ...  ...   ...
+(P1    (P1  (P1   (P1    (P1   (P1  (P1   (P1       (P1    (P1  (P1   (P1    (P1   (P1  (P1   (P1
+Pit1)  Pit2) Pit1) Pit2)  Pit1) Pit2) Pit1) Pit2)     Pit1)  Pit2) Pit1) Pit2)  Pit1) Pit2) Pit1) Pit2)
+ / \  / \   / \  / \     / \  / \   / \  / \       / \  / \   / \  / \     / \  / \   / \  / \
+[Board... [Board...[Board...[Board... [Board...[Board...[Board...[Board... [Board...[Board...[Board...[Board... [Board...[Board...[Board...[Board...
+Level 4  Level 4 Level 4 Level 4   Level 4 Level 4 Level 4 Level 4   Level 4 Level 4 Level 4 Level 4   Level 4 Level 4 Level 4 Level 4
+-LEAF- -LEAF- -LEAF- -LEAF-  -LEAF- -LEAF- -LEAF- -LEAF-  -LEAF- -LEAF- -LEAF- -LEAF-  -LEAF- -LEAF- -LEAF- -LEAF-
+Score:2  Score:3  Score:1  Score:2  Score:3  Score:4  Score:0  Score:1  Score:1  Score:2  Score:0  Score:1  Score:2  Score:3  Score:-1 Score:1

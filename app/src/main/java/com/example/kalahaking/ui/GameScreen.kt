@@ -37,6 +37,7 @@ import com.example.kalahaking.ui.theme.secondaryLightMediumContrast
 import com.example.kalahaking.ui.theme.tertiaryLightMediumContrast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @Composable
 fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
@@ -46,12 +47,13 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
 
     val boardState = remember {
         mutableStateListOf(
-            0, 0, 0, 0, 0, 1, //Player 1, pits
+            0, 2, 0, 3, 0, 0, //Player 1, pits
             0, //Player 1, Kalaha (Store)
-            0, 0, 0, 0, 0, 0, //Player 2, pits
+            5, 0, 0, 1, 0, 0, //Player 2, pits
             0, //Player 2, Kalaha (Store)
         )
     } // Observe changes in the board
+    var playAI by remember { mutableIntStateOf(0) }//TODO: Testing
     var startGame by remember { mutableStateOf(false) }// Observe changes in current player
     var gameOver by remember { mutableStateOf(false) }// Observe changes in current player
     var isFreeTurn by remember { mutableStateOf(false) }// Observe changes in current player
@@ -120,11 +122,15 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
             player1Message = "Welcome to Kalaha!"
             player2Message = "Welcome to Kalaha!"
         }
-        setPits()
-        currentPlayerState = 1
+//        setPits()
+        val randomPlayer = 2// Random.nextInt(2) + 1
+        if (randomPlayer == 2) { //TODO:Testing
+            playAI += 1
+        }
+        currentPlayerState = randomPlayer
         delay(3000)
         startGame = true
-        showMessage(1)
+        showMessage(currentPlayerState)
     }
 
     fun makeMove(player: Int, startPitIndex: Int): Boolean {
@@ -223,7 +229,9 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
 
     fun makeAIMove(onPlayerMove: (Int) -> Unit) {
         afterDelayInSeconds(3) {
+            "moving1".printLog("klajdfk")
             val bestMove = ai.getBestMoveWithMinimax(boardState)
+            "moving1".printLog(bestMove)
             bestMove?.let { onPlayerMove(it) }
         }
     }
@@ -250,19 +258,33 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
         if (isFreeTurn) {
             showMessage(currentPlayerState)
             if (currentPlayerState == 2) {
-                makeAIMove(onPlayerMove = {
-                    onPitClick(2, it)
-                })
+                playAI += 1//TODO:Testing
+//                makeAIMove(onPlayerMove = {
+//                    playAI = 0
+//                    onPitClick(2, it)
+//                })
             }
         }
         if (!isFreeTurn) {
             currentPlayerState = 3 - currentPlayerState // Switch player
             showMessage(currentPlayerState)
             if (currentPlayerState == 2) { // AI's turn after player switch
-                makeAIMove(onPlayerMove = {
-                    onPitClick(2, it)
-                })
+                playAI += 1//TODO:Testing
+//                makeAIMove(onPlayerMove = {
+//                    onPitClick(2, it)
+//                })
             }
+        }
+    }
+
+    //TODO: Testing
+    LaunchedEffect(playAI) {
+        "onRestartGame2".printLog(playAI)
+        if (playAI == 2) {
+            makeAIMove(onPlayerMove = {
+                playAI = 0
+                onPitClick(2, it)
+            })
         }
     }
 
@@ -321,8 +343,10 @@ fun GameScreen(modifier: Modifier = Modifier, ai: HelperAI) {
                 player2Message = player2Message,
                 gameOver = gameOver,
                 onRestartGame = {
+                    "onRestartGame".printLog(playAI)
+                    if (currentPlayerState == 2) playAI += 1//TODO:Testing
                     coroutineScope.launch {
-                        initializeGame()
+                        if (gameOver) initializeGame()
                     }
                 }
             )
@@ -367,7 +391,7 @@ fun DetailsCard(
         modifier = modifier
             .clip(RoundedCornerShape(12.dp))
             .background(tertiaryLightMediumContrast)
-            .customClickable(onClick = onRestartGame, isActive = gameOver, bounded = true),
+            .customClickable(onClick = onRestartGame, /*isActive = gameOver,*/ bounded = true),//TODO:Testing
     ) {
         val (message1Ref, message2Ref, gameOverRef) = createRefs()
         SimpleAnimatedVisibility(visible = player1Message.isNotBlank(), modifier = Modifier

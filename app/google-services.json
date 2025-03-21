@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "800382151528",
+    "project_id": "my-projects-fc387",
+    "storage_bucket": "my-projects-fc387.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800382151528:android:8969edf371771ed96984dd",
+        "android_client_info": {
+          "package_name": "com.example.kalahaking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQ-9AmS_QWRCJzAyBZVEWtiMbJyvRbEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

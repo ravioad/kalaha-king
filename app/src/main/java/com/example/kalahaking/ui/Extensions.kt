@@ -1,8 +1,10 @@
 package com.example.kalahaking.ui
 
+import android.app.Activity
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope
@@ -53,4 +55,9 @@ fun SimpleAnimatedVisibility(
 
 fun afterDelayInSeconds(seconds: Int, block: () -> Unit) {
     Handler(Looper.getMainLooper()).postDelayed(block, (seconds.toLong() * 1000))
+}
+
+
+fun String.printLog(text: Any?) {
+    Log.e(this, if (text !is String) text.toString() else text)
 }
