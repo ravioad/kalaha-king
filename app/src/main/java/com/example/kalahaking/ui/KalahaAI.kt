@@ -1,12 +1,11 @@
 package com.example.kalahaking.ui
 
 class KalahaAI {
-    private fun evaluateBoard(board: IntArray, player: Int): Int {
+    private fun evaluateBoard(board: IntArray): Int {
         val player2KalahaScore = board[13]
         val player1KalahaScore = board[6]
 
         val kalahaWeight = 3.0
-        val captureWeight = 1.5
         val opponentKalahaWeight = 0.5
 
         var score = 0.0
@@ -14,19 +13,46 @@ class KalahaAI {
         score += player2KalahaScore * kalahaWeight
         score -= player1KalahaScore * opponentKalahaWeight
 
-        val possibleMoves = getPossibleMovesForPlayer(board, player)
-        for (pitChoice in possibleMoves) {
-            // Check if move resulted in capture
-            if (wasCaptureMadeInMove(board, player, pitChoice)) {
-                score += captureWeight  // Add capture bonus if move leads to capture
-            }
-        }
+        val aiPlayerCaptureWeight = getAIPlayerCaptureWeight(board)
+        score += aiPlayerCaptureWeight
+
+        val opponentPlayerCaptureWeight = getOpponentPlayerCaptureWeight(board)
+        score -= opponentPlayerCaptureWeight
+
         return score.toInt()
     }
 
-    private fun wasCaptureMadeInMove(board: IntArray, player: Int, pitChoice: Int): Boolean {
+    private fun getAIPlayerCaptureWeight(board: IntArray): Double {
+        var score = 0.0
+        val captureWeight = 1.5
+        val possibleMoves = getPossibleMovesForPlayer(board, 2)
+        for (pitChoice in possibleMoves) {
+            // Check if move resulted in capture
+            val capturedSeeds = wasCaptureMadeInMove(board, 2, pitChoice)
+            if (capturedSeeds > 0) {
+                score += captureWeight * capturedSeeds  // Add capture bonus if move leads to capture
+            }
+        }
+        return score
+    }
+
+    private fun getOpponentPlayerCaptureWeight(board: IntArray): Double {
+        var score = 0.0
+        val captureWeight = 1.0
+        val possibleMoves = getPossibleMovesForPlayer(board, 1)
+        for (pitChoice in possibleMoves) {
+            // Check if move resulted in capture
+            val capturedSeeds = wasCaptureMadeInMove(board, 1, pitChoice)
+            if (capturedSeeds > 0) {
+                score += captureWeight * capturedSeeds  // Add capture bonus if move leads to capture
+            }
+        }
+        return score
+    }
+
+    private fun wasCaptureMadeInMove(board: IntArray, player: Int, pitChoice: Int): Int {
         val seedsToSow = board[pitChoice] // Get seeds to sow
-        if (seedsToSow == 0) return false // No seeds, no capture
+        if (seedsToSow == 0) return 0 // No seeds, no capture
         val opponentKalahaIndex: Int
         val playerPitsRange: IntRange
         if (player == 1) {
@@ -49,19 +75,15 @@ class KalahaAI {
         if (player == 1 && lastPitLandedIndex in playerPitsRange) { // Last pit on player's side
             if (board[lastPitLandedIndex] == 0) { // Check if landing pit is EMPTY *before* the move
                 val oppositePitIndex = 12 - lastPitLandedIndex // Calculate opposite pit index
-                if (board[oppositePitIndex] > 0) { // Check if opposite pit has seeds *before* move
-                    return true
-                }
+                return board[oppositePitIndex] + 1 //Return the number of captured seeds
             }
         } else if (player == 2 && lastPitLandedIndex in playerPitsRange) { // Player 2's capture check
             if (board[lastPitLandedIndex] == 0) {
                 val oppositePitIndex = 12 - lastPitLandedIndex
-                if (board[oppositePitIndex] > 0) {
-                    return true
-                }
+                return board[oppositePitIndex] + 1 //Return the number of captured seeds
             }
         }
-        return false
+        return 0 //Return the 0 by default
     }
 
     private fun getPossibleMovesForPlayer(board: IntArray, player: Int): List<Int> {
@@ -150,7 +172,7 @@ class KalahaAI {
         maximizingPlayer: Boolean
     ): Int {
         if (depth == 0 || isGameOverForMinimax(board)) {
-            return evaluateBoard(board, 2)
+            return evaluateBoard(board) //Evaluate board for AI Player (2)
         }
 
         if (maximizingPlayer) {

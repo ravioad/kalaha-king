@@ -35,7 +35,7 @@ Want to play Kalaha right away without using Android Studio? Follow these super 
 
 1.  **Click the Invitation Link:**  Find the invitation link for the Kalaha app. **[Tap on this link](https://appdistribution.firebase.dev/i/a0fa562e61ea8ab8)** on your computer or directly on your Android device.
 2.  **Check Your Email Inbox:**  After clicking the link, you will receive an email from Firebase App Distribution in your email inbox.
-3.  **Open Email on Your Android Phone:** **Important:** Open this email **using the email app on your Android phone** (not on your computer).  The email contains a special link that will guide the installation on your device.
+3.  **Open Email on Your Android Phone:** **Important:** Open this email **using the email app on your Android phone** (not on your computer).  The email contains the link that will guide the installation on your device.
 4.  **Follow Email Instructions:**  Inside the email, you'll see clear instructions on how to download and install the "Kalaha King" app.  **Just follow the steps described in the email.**  It will likely involve tapping a button to download and then tapping to install.
 5.  **Start Playing!** Once the installation is complete, you'll find the "Kalaha King" app on your phone or app list. **Tap the app icon to launch the game and start playing Kalaha against the AI!**
 
