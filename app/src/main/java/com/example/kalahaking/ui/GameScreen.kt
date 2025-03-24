@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.example.kalahaking.ui.theme.backgroundDark
 import com.example.kalahaking.ui.theme.primaryLightMediumContrast
 import com.example.kalahaking.ui.theme.secondaryLightMediumContrast
 import com.example.kalahaking.ui.theme.tertiaryLightMediumContrast
@@ -276,6 +277,7 @@ fun GameScreen(modifier: Modifier = Modifier, ai: KalahaAI) {
 
     ConstraintLayout(
         modifier = modifier
+            .background(backgroundDark)
             .fillMaxSize()
     ) {
         val startGuideline = createGuidelineFromStart(0.18f)
