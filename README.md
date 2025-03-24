@@ -41,6 +41,8 @@ Want to play Kalaha right away without using Android Studio? Follow these super 
 
 **Note:** Firebase App Distribution is a safe and convenient method for installing test versions of Android apps. You can be assured that the app is coming from a trusted source via Firebase.
 
+**If you have any questions or need help with installation, please feel free to contact me at [s242513@dtu.dk].**
+
 ## Game Features
 
 *   Play Kalaha against a computer AI opponent.
