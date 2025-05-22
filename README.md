@@ -44,7 +44,6 @@ Want to play Kalaha right away without using Android Studio? Follow these super 
 **If you have any questions or need help with installation, please feel free to contact me at [s242513@dtu.dk].**
 
 ## Game Features
-
 *   Play Kalaha against a computer AI opponent.
 *   AI opponent uses the **Minimax algorithm with Alpha-Beta pruning** for strategic gameplay.
 *   Adjustable AI search depth (in the code - for future enhancement).
